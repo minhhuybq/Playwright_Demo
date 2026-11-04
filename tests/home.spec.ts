@@ -3,7 +3,7 @@ import { SERVICE_CARDS } from '../src/data/testData';
 import { MAIN_MENU } from '../src/data/testData';
 import { LEGAL_PAGES } from '../src/data/testData';
 
-test('TC-01 Homepage loads', { tag: '@smoke' }, async ({ page, homePage }) => {
+test('TC-01 Homepage loads', { tag: '@smoke' }, async ({ homePage }) => {
   //Open homepage
   const hero = homePage.heroHeading;
   // Expected: title contains "Softwaretesting"
@@ -95,8 +95,7 @@ test('TC-08 Mobile menu opens', { tag: '@mobile' }, async ({ page, homePage }) =
   await expect(page.getByRole('link', { name: 'Karriere', exact: true }).last()).toBeVisible();
 });
 
-test('TC-09 Images have alt attribute', async ({ page, homePage }) => {
+test('TC-09 Images have alt attribute', async ({ page }) => {
   // Expected: no <img> without an alt attribute
-  // Hint:     page.locator('img:not([alt])') -> toHaveCount(0)
   await expect(page.locator('img:not([alt])')).toHaveCount(0);
 });

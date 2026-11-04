@@ -20,12 +20,12 @@ export class HomePage {
   }
 
   //To improve: should use this one instead of direct locator on test case, but doesn't work yet
-  serviceCardMehrErfahren(title: string): Locator {
-    return this.page
-      .locator('.eael-elements-flip-box-container')
-      .getByRole('link', { name: 'Mehr erfahren' })
-      .first();
-  }
+  // serviceCardMehrErfahren(title: string): Locator {
+  //   return this.page
+  //     .locator('.eael-elements-flip-box-container')
+  //     .getByRole('link', { name: 'Mehr erfahren' })
+  //     .first();
+  // }
 
   heroBtn_click() {
     this.heroBtn.click();
