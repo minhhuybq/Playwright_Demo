@@ -34,7 +34,8 @@ test(
   { tag: '@smoke' },
   async ({ page, homePage }) => {
     // Click the hero button
-    const hero = homePage.heroHeading;
+    //const hero = homePage.heroHeading;
+    await expect(homePage.heroHeading).toBeVisible();
     await page.waitForTimeout(2000); //To improve: Wait for cookie popup to completely disappear and heroBtn to be pressable.
     await homePage.heroBtn_click();
 
