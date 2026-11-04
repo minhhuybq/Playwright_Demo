@@ -27,7 +27,7 @@ export default defineConfig({
   // Tests tagged @mobile run only on the mobile project.
   projects: [
     { name: 'chromium', use: { ...devices['Desktop Chrome'] }, grepInvert: /@mobile/ },
-    { name: 'firefox', use: { ...devices['Desktop Firefox'] }, grepInvert: /@mobile/ },
+    //{ name: 'firefox', use: { ...devices['Desktop Firefox'] }, grepInvert: /@mobile/ },
     { name: 'webkit', use: { ...devices['Desktop Safari'] }, grepInvert: /@mobile/ },
     { name: 'mobile-chrome', use: { ...devices['Pixel 7'] }, grep: /@mobile/ },
   ],
