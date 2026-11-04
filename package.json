@@ -11,11 +11,14 @@
     "test:ui": "playwright test --ui",
     "report": "playwright show-report reports/html",
     "typecheck": "tsc --noEmit",
-    "install:browsers": "playwright install --with-deps"
+    "install:browsers": "playwright install --with-deps",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
   },
   "devDependencies": {
     "@playwright/test": "^1.49.0",
     "@types/node": "^22.0.0",
+    "prettier": "^3.9.10",
     "typescript": "^5.6.0"
   }
 }

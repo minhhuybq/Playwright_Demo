@@ -3,6 +3,7 @@
 Small Page Object Model (POM) project for https://bequalified.de.
 
 ## Setup
+
 ```bash
 npm install
 npx playwright install     # downloads the browsers
@@ -15,6 +16,7 @@ npm run report                      # open the HTML report
 ```
 
 ## Structure
+
 ```
 playwright.config.ts      browsers, parallel, reports
 src/
@@ -27,23 +29,22 @@ tests/                    the test specs (TC-01 ... TC-10)
 
 ## Test cases
 
-| ID | Tag | Test | What it checks |
-|---|---|---|---|
-| TC-01 | @smoke | Homepage loads | The hero heading shows "Softwaretesting". |
-| TC-02 | @smoke | Header menu and booking button | Services, News & Insights, Unternehmen and Karriere are visible, plus the "Termin vereinbaren" button. |
-| TC-03 | | Navigate via Services menu | Services > QA-Suite opens `/qa-suite` and the page shows an h1. |
-| TC-04 | @smoke | Hero button | Clicking "Expertengespräch vereinbaren" opens an iframe with the heading "Expertengespräch buchen". |
-| TC-05 | | Service cards (4 tests) | For each card: hover it, then click its "Mehr erfahren" link. |
-| TC-06 | @smoke | Footer contact data | Street, city and a `mailto:` mail link are shown. |
-| TC-07 | | Legal pages (2 tests) | The Impressum and Datenschutz links open the right URL and show an h2. |
-| TC-08 | @mobile | Mobile menu | On a phone, the hamburger button is visible and the menu opens ("Karriere" link visible). Runs only on `mobile-chrome`. |
-| TC-09 | | Images have alt text | No `<img>` without an `alt` attribute. |
+| ID    | Tag     | Test                           | What it checks                                                                                                          |
+| ----- | ------- | ------------------------------ | ----------------------------------------------------------------------------------------------------------------------- |
+| TC-01 | @smoke  | Homepage loads                 | The hero heading shows "Softwaretesting".                                                                               |
+| TC-02 | @smoke  | Header menu and booking button | Services, News & Insights, Unternehmen and Karriere are visible, plus the "Termin vereinbaren" button.                  |
+| TC-03 |         | Navigate via Services menu     | Services > QA-Suite opens `/qa-suite` and the page shows an h1.                                                         |
+| TC-04 | @smoke  | Hero button                    | Clicking "Expertengespräch vereinbaren" opens an iframe with the heading "Expertengespräch buchen".                     |
+| TC-05 |         | Service cards (4 tests)        | For each card: hover it, then click its "Mehr erfahren" link.                                                           |
+| TC-06 | @smoke  | Footer contact data            | Street, city and a `mailto:` mail link are shown.                                                                       |
+| TC-07 |         | Legal pages (2 tests)          | The Impressum and Datenschutz links open the right URL and show an h2.                                                  |
+| TC-08 | @mobile | Mobile menu                    | On a phone, the hamburger button is visible and the menu opens ("Karriere" link visible). Runs only on `mobile-chrome`. |
+| TC-09 |         | Images have alt text           | No `<img>` without an `alt` attribute.                                                                                  |
 
 Tags: `@smoke` = main checks (`npm run test:smoke`), `@mobile` = phone-only test.
 
-
-
 ## Rules (the course criteria)
+
 - **POM:** locators and actions live in `src/`, assertions live in `tests/`.
 - **Selectors:** prefer `getByRole` (with name), then `getByText` / `getByLabel`, then `data-testid`. No XPath, no positional CSS.
 - **Assertions:** use web-first assertions (`await expect(locator).toBeVisible()`); never `waitForTimeout`; assert exactly what the user sees.

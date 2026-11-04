@@ -6,7 +6,7 @@ export default defineConfig({
 
   // Parallelization: every test is independent, so all tests may run in parallel.
   fullyParallel: true,
-  workers: process.env.CI ? 2 : undefined,   // undefined = Playwright default (half of CPU cores)
+  workers: process.env.CI ? 2 : undefined, // undefined = Playwright default (half of CPU cores)
   retries: process.env.CI ? 1 : 0,
   forbidOnly: !!process.env.CI,
 
@@ -14,10 +14,7 @@ export default defineConfig({
   expect: { timeout: 7_000 },
 
   // Reports: console + HTML report (open with `npm run report`)
-  reporter: [
-    ['list'],
-    ['html', { outputFolder: 'reports/html', open: 'never' }],
-  ],
+  reporter: [['list'], ['html', { outputFolder: 'reports/html', open: 'never' }]],
 
   use: {
     baseURL: process.env.BASE_URL ?? 'https://bequalified.de',

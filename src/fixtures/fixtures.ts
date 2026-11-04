@@ -10,7 +10,7 @@ export const test = base.extend<{ homePage: HomePage }>({
     const accept = page.getByRole('button', { name: /akzeptieren|alle zulassen/i });
     if (await accept.isVisible()) {
       await accept.click();
-      console.log("Accepted");
+      console.log('Accepted');
     }
     await use(homePage);
   },

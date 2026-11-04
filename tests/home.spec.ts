@@ -7,12 +7,12 @@ test('TC-01 Homepage loads', { tag: '@smoke' }, async ({ page, homePage }) => {
   //Open homepage
   const hero = homePage.heroHeading;
   // Expected: title contains "Softwaretesting"
-  await expect (hero).toHaveText("Softwaretesting");
+  await expect(hero).toHaveText('Softwaretesting');
 });
 
 test('TC-02 Header shows menu and booking button', { tag: '@smoke' }, async ({ homePage }) => {
   // Expected: all MAIN_MENU entries (Services, News & Insights, Unternehmen, Karriere) visible
-  for (const name of MAIN_MENU) {                      
+  for (const name of MAIN_MENU) {
     await expect(homePage.header.menuItem(name)).toBeVisible();
   }
 
@@ -29,16 +29,20 @@ test('TC-03 Navigate to QA-Suite via Services menu', async ({ page, homePage }) 
   await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
 });
 
-test('TC-04 Hero button "Expertengespräch vereinbaren"', { tag: '@smoke' }, async ({ page, homePage }) => {
-  // Click the hero button
-  const hero = homePage.heroHeading;
-  await page.waitForTimeout(2000);  //To improve: Wait for cookie popup to completely disappear and heroBtn to be pressable.
-  await homePage.heroBtn_click(); 
-  
-  // Expected: iframe appears 
-  const iframe = page.frameLocator('iframe');
-  await expect(iframe.getByRole('heading', { level: 1 })).toHaveText("Expertengespräch buchen");
-});
+test(
+  'TC-04 Hero button "Expertengespräch vereinbaren"',
+  { tag: '@smoke' },
+  async ({ page, homePage }) => {
+    // Click the hero button
+    const hero = homePage.heroHeading;
+    await page.waitForTimeout(2000); //To improve: Wait for cookie popup to completely disappear and heroBtn to be pressable.
+    await homePage.heroBtn_click();
+
+    // Expected: iframe appears
+    const iframe = page.frameLocator('iframe');
+    await expect(iframe.getByRole('heading', { level: 1 })).toHaveText('Expertengespräch buchen');
+  },
+);
 
 // One test per card (data-driven from SERVICE_CARDS)
 for (const card of SERVICE_CARDS) {
@@ -76,19 +80,19 @@ for (const legal of LEGAL_PAGES) {
 }
 
 test('TC-08 Mobile menu opens', { tag: '@mobile' }, async ({ page, homePage }) => {
-    // Runs only on project "mobile-chrome".
-    const { mobileMenuToggle, mobileMenuClose } = homePage.header;
+  // Runs only on project "mobile-chrome".
+  const { mobileMenuToggle, mobileMenuClose } = homePage.header;
 
-    await expect(mobileMenuToggle).toBeVisible();
-    await expect(mobileMenuClose).toBeHidden();       // menu is closed at the start
-    await page.waitForTimeout(1000);  //to improve: how to pass without this timeout?
+  await expect(mobileMenuToggle).toBeVisible();
+  await expect(mobileMenuClose).toBeHidden(); // menu is closed at the start
+  await page.waitForTimeout(1000); //to improve: how to pass without this timeout?
 
-    // Steps:    tap hamburger button
-    await mobileMenuToggle.tap();
+  // Steps:    tap hamburger button
+  await mobileMenuToggle.tap();
 
-    // Expected: toggle visible before tapping; menu entries visible after tapping
-    // "Karriere" link is the last item in the mobile menu
-    await expect(page.getByRole('link', { name: 'Karriere', exact: true }).last()).toBeVisible();
+  // Expected: toggle visible before tapping; menu entries visible after tapping
+  // "Karriere" link is the last item in the mobile menu
+  await expect(page.getByRole('link', { name: 'Karriere', exact: true }).last()).toBeVisible();
 });
 
 test('TC-09 Images have alt attribute', async ({ page, homePage }) => {

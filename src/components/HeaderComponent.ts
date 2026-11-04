@@ -14,7 +14,9 @@ export class HeaderComponent {
       .or(this.root.getByRole('button', { name: 'Termin vereinbaren' }))
       .first();
 
-    this.mobileMenuToggle = page.locator('.icon-menu-button-of-three-horizontal-lines:visible').first();
+    this.mobileMenuToggle = page
+      .locator('.icon-menu-button-of-three-horizontal-lines:visible')
+      .first();
     this.mobileMenuClose = page.locator('a[href*="popup%3Aclose"]:visible').first();
   }
 
